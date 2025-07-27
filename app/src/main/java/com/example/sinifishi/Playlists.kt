@@ -1,12 +1,12 @@
 package com.example.sinifishi
 
-class Playlists(var cover: Int, var nam: String, var songs: List<Songs>) {
+class Playlists(var cover: Int, var nam: String, var songs: MutableList<Songs>) {
     companion object {
         var playlists = listOf(
             Playlists(
                 R.drawable.in_utero,
                 "A Random Playlist",
-                listOf(
+                mutableListOf(
                     Songs(
                         "Heart-Shaped Box",
                         "Nirvana",
@@ -19,7 +19,7 @@ class Playlists(var cover: Int, var nam: String, var songs: List<Songs>) {
             Playlists(
                 R.drawable.in_utero,
                 "A Random Playlist",
-                listOf(
+                mutableListOf(
                     Songs(
                         "Heart-Shaped Box",
                         "Nirvana",
@@ -31,7 +31,7 @@ class Playlists(var cover: Int, var nam: String, var songs: List<Songs>) {
             ), Playlists(
                 R.drawable.in_utero,
                 "A Random Playlist",
-                listOf(
+                mutableListOf(
                     Songs(
                         "Heart-Shaped Box",
                         "Nirvana",
@@ -43,7 +43,7 @@ class Playlists(var cover: Int, var nam: String, var songs: List<Songs>) {
             ), Playlists(
                 R.drawable.in_utero,
                 "A Random Playlist",
-                listOf(
+                mutableListOf(
                     Songs(
                         "Heart-Shaped Box",
                         "Nirvana",
@@ -55,7 +55,7 @@ class Playlists(var cover: Int, var nam: String, var songs: List<Songs>) {
             ), Playlists(
                 R.drawable.in_utero,
                 "A Random Playlist",
-                listOf(
+                mutableListOf(
                     Songs(
                         "Heart-Shaped Box",
                         "Nirvana",
@@ -67,7 +67,7 @@ class Playlists(var cover: Int, var nam: String, var songs: List<Songs>) {
             ), Playlists(
                 R.drawable.in_utero,
                 "A Random Playlist",
-                listOf(
+                mutableListOf(
                     Songs(
                         "Heart-Shaped Box",
                         "Nirvana",
@@ -79,7 +79,7 @@ class Playlists(var cover: Int, var nam: String, var songs: List<Songs>) {
             ), Playlists(
                 R.drawable.in_utero,
                 "A Random Playlist",
-                listOf(
+                mutableListOf(
                     Songs(
                         "Heart-Shaped Box",
                         "Nirvana",
@@ -92,7 +92,7 @@ class Playlists(var cover: Int, var nam: String, var songs: List<Songs>) {
             Playlists(
                 R.drawable.in_utero,
                 "A Random Pldsadasdasdadasdadsasdadasdasdadassdasdaylist",
-                listOf(
+                mutableListOf(
                     Songs(
                         "Heart-Shaped Box",
                         "Nirvana",

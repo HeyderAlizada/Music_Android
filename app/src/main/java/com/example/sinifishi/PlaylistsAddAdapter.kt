@@ -5,9 +5,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sinifishi.databinding.RecyclerViewerPlaylistsItemBinding
+class PlaylistsAddAdapter(
+    private val playlists: List<Playlists>,
+    private val songToAdd: Songs
+) : RecyclerView.Adapter<PlaylistsAddAdapter.PlayListsViewHolder>() {
 
-class PlaylistsAddAdapter(val playlists: List<Playlists>) :
-    RecyclerView.Adapter<PlaylistsAddAdapter.PlayListsViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -25,35 +27,37 @@ class PlaylistsAddAdapter(val playlists: List<Playlists>) :
         position: Int
     ) {
         val playlist = playlists[position]
-        holder.binding.playlistName.text = playlist.nam
-        holder.binding.playlistSize.text = playlist.songs.size.toString()
+        val binding = holder.binding
 
+        binding.playlistName.text = playlist.nam
+        binding.playlistSize.text = playlist.songs.size.toString()
 
+        // Check if this playlist already has the song
+        binding.radioButton.isChecked = playlist.songs.contains(songToAdd)
 
-        holder.binding.radioButton.setOnClickListener {
-            val radio = holder.binding.radioButton
-            if (radio.isChecked) {
-                Toast.makeText(
-                    holder.binding.root.context,
-                    "The song has been added to the playlist",
-                    Toast.LENGTH_SHORT
-                ).show()
+        // Avoid duplicate listeners due to RecyclerView recycling
+        binding.radioButton.setOnCheckedChangeListener(null)
+
+        binding.radioButton.setOnCheckedChangeListener { _, isChecked ->
+            val context = binding.root.context
+            if (isChecked) {
+                // If the playlist doesn't already have the song, add it
+                if (!playlist.songs.contains(songToAdd)) {
+                    (playlist.songs as MutableList).add(songToAdd)
+                    Toast.makeText(context, "Song added to ${playlist.nam}", Toast.LENGTH_SHORT).show()
+                    binding.playlistSize.text = playlist.songs.size.toString()
+                }
             } else {
-                Toast.makeText(
-                    holder.binding.root.context,
-                    "The song has been deleted from the playlist",
-                    Toast.LENGTH_SHORT
-                ).show()
+                // Remove the song
+                (playlist.songs as MutableList).remove(songToAdd)
+                Toast.makeText(context, "Song removed from ${playlist.nam}", Toast.LENGTH_SHORT).show()
+                binding.playlistSize.text = playlist.songs.size.toString()
             }
         }
-
     }
 
-    override fun getItemCount(): Int {
-        return playlists.size
-    }
+    override fun getItemCount(): Int = playlists.size
 
     class PlayListsViewHolder(val binding: RecyclerViewerPlaylistsItemBinding) :
         RecyclerView.ViewHolder(binding.root)
-
 }

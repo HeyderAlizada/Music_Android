@@ -84,7 +84,7 @@ class MusicFragment : Fragment() {
         }
 
         // RecyclerView setup
-        val rv2Adapter = PlaylistsAddAdapter(Playlists.playlists)
+        val rv2Adapter = PlaylistsAddAdapter(Playlists.playlists, args.Song)
         binding.rvPlaylists.apply {
             adapter = rv2Adapter
             layoutManager = LinearLayoutManager(requireContext())
@@ -112,6 +112,7 @@ class MusicFragment : Fragment() {
             secondBottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
 
         }
+
 
     }
 
