@@ -1,0 +1,50 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/in_utero" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/playlistName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:maxLines="3"
+        android:ellipsize="end"
+        app:layout_constraintStart_toEndOf="@id/frameLayout"
+        app:layout_constraintTop_toTopOf="@id/frameLayout"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/playlistSize"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Album description or artist"
+        android:textColor="#AAAAAA"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/frameLayout"
+        app:layout_constraintStart_toEndOf="@id/frameLayout"
+        app:layout_constraintTop_toBottomOf="@+id/playlistName" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
